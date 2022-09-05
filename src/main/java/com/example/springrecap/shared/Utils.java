@@ -9,7 +9,7 @@ import java.util.Random;
 public class Utils {
 
     private final Random RANDOM = new SecureRandom();
-    private final String ALPHANUM = "AZAGFTIYUJMMBLGHPRWUEWajsdaurmzpoqmgkhljqwyr17593295032329";
+    private final String ALPHANUM = "AZAGFYMMBLGHPRWUEWajsdurmzgkhljqwyr1759332329";
 
     public String generateStringId(int length){
         StringBuilder stringBuilder = new StringBuilder(length);

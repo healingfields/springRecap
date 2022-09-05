@@ -40,7 +40,7 @@ public class StagiaireServiceImpl implements StagiaireService{
     @Override
     public StagiaireDto getStagiaireByStagiaireId(String id) {
 
-        Stagiaire stagiaire = stagiaireRepository.findStagiaireById(id);
+        Stagiaire stagiaire = stagiaireRepository.findStagiaireByStagiaireId(id);
 
         if(stagiaire==null)
             throw new RuntimeException("stagiaire not found :" + id);
@@ -59,7 +59,9 @@ public class StagiaireServiceImpl implements StagiaireService{
             throw new RuntimeException("groupe provided not found : " + stagiaireDto.getGroupe().getGroupeId());
 
         GroupeDto groupeDto = MyModelMapper.myMap(groupe, GroupeDto.class);
-        stagiaireDto.setId(utils.generateStringId(25));
+        stagiaireDto.setStagiaireId(utils.generateStringId(15));
+        stagiaireDto.setNom(stagiaireDto.getNom());
+        stagiaireDto.setPrenom(stagiaireDto.getPrenom());
         stagiaireDto.setGroupe(groupeDto);
         Stagiaire stagiaire = MyModelMapper.myMap(stagiaireDto, Stagiaire.class);
         Stagiaire created = stagiaireRepository.save(stagiaire);
@@ -75,7 +77,7 @@ public class StagiaireServiceImpl implements StagiaireService{
         if(groupe == null)
             throw new RuntimeException("groupe not found: " + stagiaireDto.getGroupe().getGroupeId());
 
-        Stagiaire stagiaire = stagiaireRepository.findStagiaireById(id);
+        Stagiaire stagiaire = stagiaireRepository.findStagiaireByStagiaireId(id);
         if(stagiaire == null)
             throw new RuntimeException("stagiaire not found: " + id);
 
@@ -92,7 +94,7 @@ public class StagiaireServiceImpl implements StagiaireService{
 
     @Override
     public void deleteStagiaire(String id) {
-        Stagiaire stagiaire = stagiaireRepository.findStagiaireById(id);
+        Stagiaire stagiaire = stagiaireRepository.findStagiaireByStagiaireId(id);
         if(stagiaire == null)
             throw new RuntimeException("stagiaire provided not found: " + id);
        stagiaireRepository.delete(stagiaire);

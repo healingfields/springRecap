@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StagiaireRepository extends CrudRepository<Stagiaire, Long> {
 
-    Stagiaire findStagiaireById(String stagiaireId);
+    Stagiaire findStagiaireByStagiaireId(String stagiaireId);
 }

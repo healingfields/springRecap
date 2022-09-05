@@ -6,7 +6,7 @@ public class StagiaireDto implements Serializable {
 
     private static final long serialVersionUID = -13728473802L;
 
-    private String id;
+    private long id;
 
     private String nom;
 
@@ -16,11 +16,12 @@ public class StagiaireDto implements Serializable {
 
     private GroupeDto groupe;
 
-    public String getId() {
+    public long getId() {
         return id;
+
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

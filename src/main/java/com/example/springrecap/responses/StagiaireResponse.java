@@ -8,7 +8,7 @@ public class StagiaireResponse {
 
     private String stagiaireId;
 
-    private GroupeResponse groupeResponse;
+    private GroupeResponse groupe;
 
     public String getNom() {
         return nom;
@@ -34,11 +34,11 @@ public class StagiaireResponse {
         this.stagiaireId = stagiaireId;
     }
 
-    public GroupeResponse getGroupeResponse() {
-        return groupeResponse;
+    public GroupeResponse getGroupe() {
+        return groupe;
     }
 
-    public void setGroupeResponse(GroupeResponse groupeResponse) {
-        this.groupeResponse = groupeResponse;
+    public void setGroupe(GroupeResponse groupe) {
+        this.groupe = groupe;
     }
 }
