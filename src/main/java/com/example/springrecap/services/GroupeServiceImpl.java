@@ -6,9 +6,10 @@ import com.example.springrecap.repos.GroupeRepository;
 import com.example.springrecap.shared.MyModelMapper;
 import com.example.springrecap.shared.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class GroupeServiceImpl implements GroupeService
 {
 
@@ -31,7 +32,7 @@ public class GroupeServiceImpl implements GroupeService
 
     @Override
     public GroupeDto getGroupeByGroupeId(String groupeId) {
-        Groupe groupe = groupeRepository.findByGroupeById(groupeId);
+        Groupe groupe = groupeRepository.findGroupeByGroupeId(groupeId);
 
         if(groupe == null){
             throw new RuntimeException("Groupe not found: " + groupeId );
@@ -45,7 +46,7 @@ public class GroupeServiceImpl implements GroupeService
     @Override
     public GroupeDto createGroupe(GroupeDto groupeDto) {
 
-        groupeDto.setGroupeId(utils.generateStringId(32));
+        groupeDto.setGroupeId(utils.generateStringId(25));
         Groupe groupe = MyModelMapper.myMap(groupeDto, Groupe.class);
         Groupe created = groupeRepository.save(groupe);
         GroupeDto createdDto = MyModelMapper.myMap(created, GroupeDto.class);
@@ -55,7 +56,7 @@ public class GroupeServiceImpl implements GroupeService
 
     @Override
     public GroupeDto updateGroupe(String groupeId, GroupeDto groupeDto) {
-        Groupe groupe = groupeRepository.findByGroupeById(groupeId);
+        Groupe groupe = groupeRepository.findGroupeByGroupeId(groupeId);
 
         if(groupe == null)
             throw new RuntimeException("Group not found: " + groupeId);
@@ -69,7 +70,7 @@ public class GroupeServiceImpl implements GroupeService
 
     @Override
     public void deleteGroupe(String groupeId) {
-        Groupe groupe = groupeRepository.findByGroupeById(groupeId);
+        Groupe groupe = groupeRepository.findGroupeByGroupeId(groupeId);
 
         if(groupe == null)
             throw new RuntimeException("groupe not found: "+ groupeId);
